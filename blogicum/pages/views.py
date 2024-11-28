@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 # Страница "О нас"
 def about(request):
     return render(request, 'pages/about.html')
