@@ -52,7 +52,11 @@ def index(request):
     Посты сортируются в обратном порядке, начиная с самого нового.
     """
     sorted_posts = sorted(posts, key=lambda post: post['id'], reverse=True)
-    return render(request, 'blog/index.html', {'posts': sorted_posts})
+    return render(
+        request,
+        'blog/index.html',
+        {'posts': sorted_posts})
+
 
 def post_detail(request, id):
     """
@@ -63,15 +67,22 @@ def post_detail(request, id):
         post = next(post for post in posts if post['id'] == id)
     except StopIteration:
         raise Http404(f'Пост с ID {id} не найден.')
-    return render(request, 'blog/detail.html', {'post': post})
+    return render(
+        request,
+        'blog/detail.html',
+        {'post': post})
+
 
 def category_posts(request, category_slug):
     """
     Отображает все посты, относящиеся к заданной категории.
-    Если посты для указанной категории не найдены, возбуждается исключение Http404.
+    Если посты для указанной категории не найдены,
+    возбуждается исключение Http404.
     """
     filtered_posts = [post for post in posts if post['category'] == category_slug]
     if not filtered_posts:
         raise Http404(f'Посты для категории {category_slug} не найдены.')
-    return render(request, 'blog/category.html', {'posts': filtered_posts, 'category': category_slug})
-
+    return render(
+        request,
+        'blog/category.html',
+        {'posts': filtered_posts, 'category': category_slug})
