@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
- <title>Лента записей</title>
+Лента записей
 {% endblock %}
 
 {% block content %}
@@ -21,7 +21,6 @@
             </a>
             </li>
           </ul>
-          <!-- Первые 10 слов -->
           <p>{{post.text|truncatewords:10 }}</p>
           <a href="{% url 'blog:post_detail' post.id %}"> Читать полный текст </a>
         </article>
