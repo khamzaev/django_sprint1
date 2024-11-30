@@ -53,7 +53,6 @@ def index(request):
     Отображает главную страницу с отсортированными по ID постами.
 
     Посты сортируются в обратном порядке, начиная с самого нового.
-
     """
     sorted_posts = sorted(posts, key=lambda post: post['id'], reverse=True)
     return render(
@@ -67,7 +66,6 @@ def post_detail(request, id):
     Отображает подробную информацию о посте по его ID.
 
     Если пост с указанным ID не найден, возбуждается исключение Http404.
-
     """
     try:
         post = next(post for post in posts if post['id'] == id)
@@ -81,7 +79,6 @@ def post_detail(request, id):
 
 def category_posts(request, category_slug):
     """Отображает все посты, относящиеся к заданной категории."""
-
     filtered_posts = [
         post for post in posts if post['category'] == category_slug
     ]
