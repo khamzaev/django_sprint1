@@ -83,16 +83,10 @@ def category_posts(request, category_slug):
     """
     Отображает все посты, относящиеся к заданной категории.
 
-    Если посты для указанной категории не найдены,
-
-    возбуждается исключение Http404.
-
     """
     filtered_posts = [
         post for post in posts if post['category'] == category_slug
     ]
-    if not filtered_posts:
-        raise Http404(f'Посты для категории {category_slug} не найдены.')
     return render(
         request,
         'blog/category.html',
