@@ -80,10 +80,8 @@ def post_detail(request, id):
 
 
 def category_posts(request, category_slug):
-    """
-    Отображает все посты, относящиеся к заданной категории.
+    """Отображает все посты, относящиеся к заданной категории."""
 
-    """
     filtered_posts = [
         post for post in posts if post['category'] == category_slug
     ]
